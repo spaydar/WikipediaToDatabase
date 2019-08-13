@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="11923b7f-86f8-441c-b940-d420dd5d6965" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cities3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cities3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driveapi.go" beforeDir="false" afterPath="$PROJECT_DIR$/driveapi.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paris.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urls.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +69,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestOne in WikipediaToDatabase">
+  <component name="RunManager" selected="Go Test.Test3Cities1Error in WikipediaToDatabase">
     <configuration name="go build WikipediaToDatabase" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="WikipediaToDatabase" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -76,6 +77,17 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <package value="WikipediaToDatabase" />
       <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test3Cities1Error in WikipediaToDatabase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="WikipediaToDatabase" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="WikipediaToDatabase" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^Test3Cities1Error$" />
       <method v="2" />
     </configuration>
     <configuration name="TestMainMethod in WikipediaToDatabase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -126,9 +138,11 @@
       <item itemvalue="Go Test.go test WikipediaToDatabase (1)" />
       <item itemvalue="Go Test.TestOne in WikipediaToDatabase" />
       <item itemvalue="Go Build.go build WikipediaToDatabase" />
+      <item itemvalue="Go Test.Test3Cities1Error in WikipediaToDatabase" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.Test3Cities1Error in WikipediaToDatabase" />
         <item itemvalue="Go Test.TestOne in WikipediaToDatabase" />
         <item itemvalue="Go Build.go build WikipediaToDatabase" />
         <item itemvalue="Go Test.TestMainMethod in WikipediaToDatabase" />

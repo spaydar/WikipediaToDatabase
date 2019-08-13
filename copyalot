@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+for ((i = 0; i < 1000000; i++)); do
+	echo "Los Angeles, CA" >> LA.txt
+done
+

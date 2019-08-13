@@ -43,9 +43,10 @@ func startDatabase() (*sql.DB, error) {
 	return db, nil
 }
 
-func queryAndCache(db *sql.DB, service *drive.Service, file *os.File) error {
+func queryAndCache(db *sql.DB, service *drive.Service, infile *os.File, dirName string,
+	urlfilename string, errorfilename string,) error {
 	// create a scanner to read content of input file
-	scanner := bufio.NewScanner(file)
+	scanner := bufio.NewScanner(infile)
 
 	// scan first line of input file to determine how many cities will be requested. verify >= 1
 	scanner.Scan()
@@ -60,14 +61,14 @@ func queryAndCache(db *sql.DB, service *drive.Service, file *os.File) error {
 	numCities := uint(temp)
 
 	// create file for successful requests
-	urlsfile, err := os.Create("urls.txt")
+	urlsfile, err := os.Create(fmt.Sprintf("%s.txt", urlfilename))
 	if err != nil {
 		return err
 	}
 	defer urlsfile.Close()
 
 	// create a file for failed requests
-	errorsfile, err := os.Create("errors.txt")
+	errorsfile, err := os.Create(fmt.Sprintf("%s.txt", errorfilename))
 	if err != nil {
 		return err
 	}
@@ -78,7 +79,7 @@ func queryAndCache(db *sql.DB, service *drive.Service, file *os.File) error {
 
 	// variable to track if Drive folder files have been created
 	//var directoryCreated bool = false
-	dir, err := createDir(service, "Cities", "root")
+	dir, err := createDir(service, dirName, "root")
 	if err != nil {
 		panic(err)
 	}
@@ -106,6 +107,9 @@ func queryAndCache(db *sql.DB, service *drive.Service, file *os.File) error {
 				case sql.ErrNoRows:
 					resp, err := http.Get(fmt.Sprintf("https://en.wikipedia.org/api/rest_v1/page/pdf/%s", city))
 					if err != nil {
+						errorsChan <- &Pair{city, "Wikipedia"} ; return
+					}
+					if resp.Status != "200 OK" {
 						errorsChan <- &Pair{city, "Wikipedia"} ; return
 					}
 					defer resp.Body.Close()
@@ -145,11 +149,11 @@ func queryAndCache(db *sql.DB, service *drive.Service, file *os.File) error {
 		case errormsg := <-errorsChan:
 			// error was in adding to database
 			if errormsg.Val != "Wikipedia" {
-				_, err := urlsfile.WriteString(fmt.Sprintf("Error while adding %s to %s\n",
+				_, err := errorsfile.WriteString(fmt.Sprintf("Error while adding %s to %s\n",
 					errormsg.City, errormsg.Val))
 				if err != nil { return err }
 			} else {
-				_, err := urlsfile.WriteString(fmt.Sprintf("Error while requesting %s from %s\n",
+				_, err := errorsfile.WriteString(fmt.Sprintf("Error while requesting %s from %s\n",
 					errormsg.City, errormsg.Val))
 				if err != nil {
 					return err
@@ -193,7 +197,7 @@ func main() {
 	// of city Wikipedia Google Drive docs from database. if items not in database, create docs
 	// by querying Wikipedia using its REST API and send to Google Drive API to create Doc
 	// cache the resulting link in the database
-	err = queryAndCache(db, service, infile)
+	err = queryAndCache(db, service, infile, "Cities", "urls", "errors")
 	if err != nil {
 		panic(err)
 	}
