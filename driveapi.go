@@ -131,8 +131,30 @@ func createFile(service *drive.Service, name string, mimeType string, content io
 		log.Println("Could not create file: " + err.Error())
 		return nil, err
 	}
+	// allow anyone to discover and read file
+	p := createAnyoneReadsPermission()
+	_, err = service.Permissions.Create(file.Id, p).Fields("*").Do()
+	if err != nil {
+		log.Println("Could not create file permission: " + err.Error())
+		return nil, err
+	}
 
-	return file, nil
+	file1, err:= service.Files.Get(file.Id).Fields("*").Do()
+	if err != nil {
+		log.Println("Error in get file call")
+		return nil, err
+	}
+
+	return file1, nil
+}
+
+func createAnyoneReadsPermission() (*drive.Permission) {
+	p := &drive.Permission{
+		AllowFileDiscovery:         true,
+		Role:                       "reader",
+		Type:                       "anyone",
+	}
+	return p
 }
 
 /*

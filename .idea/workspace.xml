@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="11923b7f-86f8-441c-b940-d420dd5d6965" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cities3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cities3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driveapi.go" beforeDir="false" afterPath="$PROJECT_DIR$/driveapi.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
     </list>
@@ -66,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build WikipediaToDatabase">
+  <component name="RunManager" selected="Go Test.TestOne in WikipediaToDatabase">
     <configuration name="go build WikipediaToDatabase" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="WikipediaToDatabase" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -127,8 +129,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build WikipediaToDatabase" />
         <item itemvalue="Go Test.TestOne in WikipediaToDatabase" />
+        <item itemvalue="Go Build.go build WikipediaToDatabase" />
         <item itemvalue="Go Test.TestMainMethod in WikipediaToDatabase" />
         <item itemvalue="Go Test.go test WikipediaToDatabase (1)" />
       </list>
@@ -152,9 +154,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>84</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/driveapi.go</url>
+          <line>135</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

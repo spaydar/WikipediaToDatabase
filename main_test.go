@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"testing"
 )
 
@@ -10,9 +11,18 @@ func TestOne(t *testing.T) {
 		panic(err)
 	}
 	defer db.Close()
-	err = queryAndCache(db,"cities3.txt")
+	service, err := getService()
 	if err != nil {
-		t.Error("Error in main function:", err)
+		panic(err)
+	}
+	infile, err := os.Open("cities3.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer infile.Close()
+	err = queryAndCache(db, service, infile)
+	if err != nil {
+		t.Error("Error in queryAndCache:", err)
 		return
 	}
 }
