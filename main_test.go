@@ -1,13 +1,19 @@
-package WikipediaToDatabase
+package main
 
 import (
 	"testing"
 )
 
-func TestMainMethod(t *testing.T) {
-	err := main()
+func TestOne(t *testing.T) {
+	db, err := startDatabase()
 	if err != nil {
-		t.Error("Error in connecting to database", err)
+		panic(err)
+	}
+	defer db.Close()
+	err = queryAndCache(db,"cities3.txt")
+	if err != nil {
+		t.Error("Error in main function:", err)
 		return
 	}
 }
+
